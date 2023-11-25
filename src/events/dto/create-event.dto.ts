@@ -32,6 +32,12 @@ export class CreateEventDto {
   city: string;
 
   @IsString()
+  @IsOptional()
+  @Transform(({ value }) => value.trim())
+  @IsNotEmpty()
+  image: string;
+
+  @IsString()
   @Transform(({ value }) => value.trim())
   @IsNotEmpty()
   address: string;

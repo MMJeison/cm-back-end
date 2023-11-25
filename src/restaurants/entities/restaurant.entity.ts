@@ -23,6 +23,9 @@ export class Restaurant extends BaseEntity {
   @Column({ type: 'text' })
   image: string;
 
+  @Column({type: 'decimal', precision: 2, scale: 1, nullable: true})
+  rating: number;
+
   @OneToMany(() => RestaurantRating, restaurantRating => restaurantRating.restaurant)
   ratings: RestaurantRating[];
 

@@ -29,6 +29,9 @@ export class Event extends BaseEntity {
   @Column({ type: 'date' })
   date: Date;
 
+  @Column({ type: 'text' })
+  image: string;
+
   @OneToMany(() => EventRating, eventRating => eventRating.event)
   ratings: EventRating[];
 

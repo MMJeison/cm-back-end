@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer'
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 
 export class CreateRestaurantDto {
 
@@ -29,6 +29,11 @@ export class CreateRestaurantDto {
   @Transform(({ value }) => value.trim())
   @IsNotEmpty()
   address: string;
+
+  @IsNumber()
+  @Min(0)
+  @Max(5)
+  rating: number;
 
   @IsOptional()
   @IsString()
