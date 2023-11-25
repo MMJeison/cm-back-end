@@ -58,7 +58,13 @@ export class RestaurantRatingsService {
     return this.restaurantRatingRepository.find({ where: { user: { id: userId } } });
   }
 
-  
+  async updateRestaurantRating(restaurantId: string) {
+    const restaurantRatings = await this.findByRestaurant(restaurantId);
+    const total = restaurantRatings.reduce((acc, restaurantRating) => acc + restaurantRating.puntuacion, 0);
+    const count = restaurantRatings.length;
+    const rating = count ? total / count : null;
+    return this.restaurantsService.update(restaurantId, { rating });
+  }
 
   update(id: string, updateRestaurantRatingDto: UpdateRestaurantRatingDto) {
     // TODO: Implement

@@ -1,3 +1,4 @@
+import { RestaurantEvent } from "@/restaurant-event/entities/restaurant-event.entity";
 import { RestaurantRating } from "@/restaurant-ratings/entities/restaurant-rating.entity";
 import { BaseEntity } from "src/common/config/base-entity";
 import { Column, Entity, OneToMany } from "typeorm";
@@ -26,7 +27,13 @@ export class Restaurant extends BaseEntity {
   @Column({type: 'decimal', precision: 2, scale: 1, nullable: true})
   rating: number;
 
+  @Column({ type: 'text', nullable: true })
+  openingHours: string;
+
   @OneToMany(() => RestaurantRating, restaurantRating => restaurantRating.restaurant)
   ratings: RestaurantRating[];
+
+  @OneToMany(() => RestaurantEvent, restaurantEvent => restaurantEvent.restaurant)
+  events: RestaurantEvent[];
 
 }

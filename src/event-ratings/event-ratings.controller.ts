@@ -34,6 +34,12 @@ export class EventRatingsController {
     return this.eventRatingsService.findByUser(userId);
   }
 
+  @Get('update-event-rating/:eventId')
+  updateEventRating(@Param('eventId') eventId: string) {
+    return this.eventRatingsService.updateEventRating(eventId);
+  }
+
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEventRatingDto: UpdateEventRatingDto) {
     return this.eventRatingsService.update(id, updateEventRatingDto);

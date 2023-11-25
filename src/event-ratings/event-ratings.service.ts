@@ -62,6 +62,14 @@ export class EventRatingsService {
     return this.eventRatingRepository.find({ where: { user: { id: userId } } });
   }
 
+  async updateEventRating(eventId: string) {
+    const eventRatings = await this.findByEvent(eventId);
+    const total = eventRatings.reduce((acc, eventRating) => acc + eventRating.puntuacion, 0);
+    const count = eventRatings.length;
+    const rating = count ? total / count : null;
+    return this.eventsService.update(eventId, { rating });
+  }
+
   async update(id: string, updateEventRatingDto: UpdateEventRatingDto) {
     const eventRating = await this.findOne(id);
     if(!eventRating) {

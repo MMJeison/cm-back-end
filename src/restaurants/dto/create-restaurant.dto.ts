@@ -39,6 +39,12 @@ export class CreateRestaurantDto {
   @IsString()
   @Transform(({ value }) => value.trim())
   @IsNotEmpty()
+  openingHours: string;
+
+  @IsOptional()
+  @IsString()
+  @Transform(({ value }) => value.trim())
+  @IsNotEmpty()
   image: string;
 
 }

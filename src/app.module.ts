@@ -9,6 +9,7 @@ import { EventRatingsModule } from './event-ratings/event-ratings.module';
 import { RestaurantRatingsModule } from './restaurant-ratings/restaurant-ratings.module';
 import * as Joi from 'joi';
 import { ConfigModule } from '@nestjs/config';
+import { RestaurantEventModule } from './restaurant-event/restaurant-event.module';
 
 
 @Module({
@@ -40,6 +41,7 @@ import { ConfigModule } from '@nestjs/config';
     RestaurantsModule,
     EventRatingsModule,
     RestaurantRatingsModule,
+    RestaurantEventModule,
   ],
   controllers: [AppController],
   providers: [AppService],
